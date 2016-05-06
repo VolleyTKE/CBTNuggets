@@ -23,3 +23,9 @@ print bell_cat
 print back_cat
 print form_cat
 print line_cat
+
+
+#Makes a star shape, runs infinitely
+while True:
+    for i in ["/","-","|","\\","|"]:
+        print "%s\r" % i,
