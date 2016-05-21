@@ -11,6 +11,7 @@ txt = open(filename)
 print "Here's your file %r:" % filename
 #print runs a read method on the previously opened object and prints the contents.
 print txt.read()
+txt.close()
 
 #prints the words below
 print "Type the filename again:"
@@ -22,4 +23,4 @@ txt_again = open(file_again)
 
 #print runs a read method on the opened file object and prints the contents
 print txt_again.read()
-
+txt_again.close()
