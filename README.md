@@ -1,2 +1,2 @@
-# CBTNuggets
-CBT Tutorials I've done
+# PythonTuts
+Python Tutorials I've done
