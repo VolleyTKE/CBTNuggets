@@ -17,4 +17,5 @@ txt_again = open(file_again)
 #reads contents to the terminal
 print txt_again.read()
 
-close()
+txt_again.close()
+
