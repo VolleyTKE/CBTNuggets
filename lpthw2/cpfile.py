@@ -3,26 +3,46 @@ from os.path import exists
 
 script, from_file, to_file = argv
 
-print "Copying from %s to %s" % (from_file, to_file)
+programEnd = "Thank you, \n...\nProgram closing\n..."
 
-indata = open(from_file).read()
+yOrN = "0 for no, 1 for yes: "
 
-first = indata[0:17]
+print "Would you like to make a copy of %s file to this %s file?" % (from_file, to_file)
+input = raw_input(yOrN)
+if input == "1":
+    indata = open(from_file).read()
 
-print "The input file is %d bytes long" % len(indata)
+    print "The input file is %d bytes long" % len(indata)
 
-print "Does the output file exist? %r" % exists(to_file)
-print "Ready, hit RETURN to continue, CTRL-C to abort."
-raw_input()
+    print "Does the output file exist? %r" % exists(to_file)
 
-out_file = open(to_file, 'w')
+    print "Ready, hit RETURN to continue, CTRL-C to abort."
+    raw_input()
 
-input = raw_input("Please enter the exercise number...\n")
+    out_file = open(to_file, 'w')
+    out_file.write(indata)
 
-to_out_file = first + ' ' + input + '.'
-print to_out_file
-out_file.write(to_out_file)
+    print "Would you like to add the exercise number to this file?"
+    answer = raw_input(yOrN)
 
-print "Alright, all done."
+    if answer == "1":
+        exerciseNum = raw_input("Please enter the exercise number...\n")
+        out_file.seek(0,0)
 
-out_file.close()
+        to_out_file = "This is Exercise " + exerciseNum + "."
+
+        out_file.write(to_out_file + "\n" + indata)
+
+        print "Alright, all done."
+
+        out_file.close()
+
+    else:
+        out_file.close()
+
+        print programEnd
+
+
+else:
+    out_file.close()
+    print programEnd
