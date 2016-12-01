@@ -1,4 +1,5 @@
 from sys import exit
+world_travel = False
 
 def inputNumber(message):
   while True:
@@ -17,10 +18,13 @@ def gold_room():
     how_much = 0
     how_much = inputNumber(input)
 
-    if how_much < 50:
+    if how_much < 50 and how_much != 2:
         print "Nice, you're not greedy, you win!"
         exit(0)
+    elif how_much == 2 and not world_travel:
+        secret_room()
     else:
+        print world_travel
         dead("you greedy bastard!")
 
 def bear_room():
@@ -53,6 +57,7 @@ def cthulhu_room():
     choice = raw_input("> ")
 
     if "flee" in choice:
+        global world_travel
         start()
     elif "head" in choice:
         dead("Well that was tasty!")
@@ -77,6 +82,12 @@ def start():
     else:
         dead("You stumble around the room until you starve.")
 
-#def secret_room()
+def secret_room():
+    print "You are transported to an awesome place"
+    print """\tIt Says: \nNo man has the right to be an amateur in the matter of physical training.\n
+        It is a shame for a man to grow old without seeing the beauty and strength of which his body is capable."""
+
+    dead("SUPER WINNER")
+    exit(0)
 
 start()
