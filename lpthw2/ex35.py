@@ -1,13 +1,21 @@
 from sys import exit
 
+def inputNumber(message):
+  while True:
+    try:
+       userInput = int(raw_input("> "))
+    except ValueError:
+       print("Not an integer! Try again.")
+       continue
+    else:
+       return userInput
+       break
+
+
 def gold_room():
     print "this room is full of gold. How much do you take?"
-
-    choice = raw_input("> ")
-    if "0" in choice or "1" in choice:
-        how_much = int(choice)
-    else:
-        dead("Man, learn to type a number.")
+    how_much = 0
+    how_much = inputNumber(input)
 
     if how_much < 50:
         print "Nice, you're not greedy, you win!"
@@ -68,5 +76,7 @@ def start():
         cthulhu_room()
     else:
         dead("You stumble around the room until you starve.")
+
+#def secret_room()
 
 start()
