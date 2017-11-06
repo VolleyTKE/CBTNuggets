@@ -1,3 +1,5 @@
+import requests
+
 def get_emails():
     emails = {}
 
@@ -22,6 +24,12 @@ def get_schedule():
 
     return schedule
 
+def get_weather_forecast():
+    url = 'http://api.openweathermap.org/data/2.5/weather?zip=63104,us&appid=8917ff3d94488468bf8493d0515f13d2'
+    weather_request = requests.get(url)
+    weather_json = weather_request.json()
+    print(weather_json)
+
 def main():
     emails = get_emails()
     print(emails)
@@ -29,4 +37,5 @@ def main():
     schedule = get_schedule()
     print(schedule)
 
+    get_weather_forecast()
 main()
