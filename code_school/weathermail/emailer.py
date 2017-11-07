@@ -25,13 +25,23 @@ def get_schedule():
     return schedule
 
 def get_weather_forecast():
-    url = 'http://api.openweathermap.org/data/2.5/weather?zip=63104,us&appid=8917ff3d94488468bf8493d0515f13d2'
+    url = 'http://api.openweathermap.org/data/2.5/weather?zip=63104,us&units=imperial&appid=8917ff3d94488468bf8493d0515f13d2'
     weather_request = requests.get(url)
     weather_json = weather_request.json()
     #print(weather_json)
 
     description = weather_json['weather'][0]['description']
     print(description)
+    temp_min = weather_json['main']['temp_min']
+    temp_max = weather_json['main']['temp_max']
+    print(temp_min)
+    print(temp_max)
+
+    forecast = 'The circus forecast for today is '
+    forecast += description + ' with a high of ' + str(temp_max)
+    forecast += ' and a low of ' + str(temp_min)
+
+    print(forecast)
 
 def main():
     emails = get_emails()
