@@ -1,5 +1,6 @@
 import requests
 import smtplib
+import getpass
 
 def get_emails():
     emails = {}
@@ -49,7 +50,7 @@ def send_emails(emails, schedule, forecast):
     server = smtplib.SMTP('smtp.gmail.com', '587')
 
     username = user()
-    password = secure()
+    password = secure_password()
 
     #start encryption
     server.starttls()
@@ -58,7 +59,7 @@ def send_emails(emails, schedule, forecast):
     server.login(username, password)
 
     to_email = 'chris.a.carr@gmail.com'
-    test_message = 'Subject: Welcome to the circus:\n' + 'test body' + 3
+    test_message = 'Subject: Welcome to the circus:\n' + 'test body'
 
     #send to entire email list
     #for to_email, name in emails.items():
@@ -73,8 +74,8 @@ def user():
     return user
 
 #password, never save in script or plan text
-def secure():
-    password = input('password:')
+def secure_password():
+    password = getpass.getpass("Password: ")
     return password
 
 def main():
