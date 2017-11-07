@@ -48,21 +48,31 @@ def send_emails(emails, schedule, forecast):
     #connect to smtp server
     server = smtplib.SMTP('smtp.gmail.com', '587')
 
-    #start encryption
     username = user()
     password = secure()
+
+    #start encryption
     server.starttls()
+
+    #login
     server.login(username, password)
 
     to_email = 'chris.a.carr@gmail.com'
-    test_message = 'test body'
+    test_message = 'Subject: Welcome to the circus:\n' + 'test body' + 3
+
+    #send to entire email list
+    #for to_email, name in emails.items():
+    #    message = 'Subject: Welcome to the circus:\n'
+
     server.sendmail(username, to_email, test_message)
     quit()
 
+#username function
 def user():
     user = 'cvg.developer@gmail.com'
     return user
 
+#password, never save in script or plan text
 def secure():
     password = input('password:')
     return password
@@ -77,7 +87,7 @@ def main():
     forecast = get_weather_forecast()
     print(forecast)
 
-    send_emails(emails, schedule,forecast)
+    send_emails(emails, schedule, forecast)
 
 
 main()
