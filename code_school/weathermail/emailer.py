@@ -58,14 +58,18 @@ def send_emails(emails, schedule, forecast):
     #login
     server.login(username, password)
 
-    to_email = 'chris.a.carr@gmail.com'
-    test_message = 'Subject: Welcome to the circus:\n' + 'test body'
+	#for testing
+    #to_email = 'chris.a.carr@gmail.com'
+    #test_message = 'Subject: Welcome to the circus:\n' + 'test body'
 
     #send to entire email list
-    #for to_email, name in emails.items():
-    #    message = 'Subject: Welcome to the circus:\n'
-
-    server.sendmail(username, to_email, test_message)
+    for to_email, name in emails.items():
+	    message = 'Subject: Welcome to the circus!\n'
+	    message += 'Hi, ' + name + '\n\n' + 'We are reaching out to you with exciting news!\n\n'
+	    message += forecast + '\n\n'
+	    message += 'The Schedule is:\n' + schedule
+	    server.sendmail(username, to_email, message)
+		
     quit()
 
 #username function
