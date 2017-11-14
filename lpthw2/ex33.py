@@ -39,4 +39,8 @@ if input == "2":
 print "\nThe numbers: "
 
 for num in numbers:
+<<<<<<< HEAD
 print num
+=======
+    print num
+>>>>>>> remotes/origin/LPTHW
