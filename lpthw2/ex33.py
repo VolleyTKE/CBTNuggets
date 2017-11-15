@@ -39,5 +39,5 @@ if input == "2":
 print "\nThe numbers: "
 
 for num in numbers:
-print num
 
+print num
